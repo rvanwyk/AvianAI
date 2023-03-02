@@ -10,10 +10,10 @@ The dataset used for this project is the Birds-150 dataset. This dataset contain
 ## Dependencies
 The following Python packages are required to run this project:
 
-tensorflow
-keras
-numpy
-matplotlib
+* tensorflow
+* keras
+* numpy
+* matplotlib
 
 ## Usage
 To train the model, run the following command:
