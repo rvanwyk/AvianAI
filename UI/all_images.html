@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AvianAI Images</title>
+	<style>
+		/* Style the container that holds the images */
+		#container {
+			column-count: 3;
+			column-gap: 10px;
+			width: 100%;
+			margin-top: 20px;
+		}
+
+		/* Style the images */
+		.image {
+			display: inline-block;
+			margin-bottom: 10px;
+			width: 100%;
+			height: auto;
+			object-fit: cover;
+		}
+
+		/* Style the loading message */
+		#loading {
+			display: none;
+			text-align: center;
+			margin: 20px 0;
+			font-size: 20px;
+			color: #888;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		var page = 1;
+		var isLoading = false;
+
+		// Load the initial set of images
+		$(document).ready(function() {
+			loadImages(page);
+			page++;
+		});
+
+		// Load more images when user scrolls to bottom of page
+		$(window).scroll(function() {
+			if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
+				if (!isLoading) {
+					isLoading = true;
+					loadImages(page);
+					page++;
+				}
+			}
+		});
+
+		// Load images via AJAX
+		function loadImages(page) {
+			$("#loading").show();
+			$.ajax({
+				url: "load_images.php",
+				type: "POST",
+				data: {page: page},
+				dataType: "json",
+				success: function(data) {
+					$("#loading").hide();
+					if (data.length > 0) {
+						for (var i = 0; i < data.length; i++) {
+							$("#container").append("<img class='image' src='" + data[i].url + "'>");
+						}
+					} else {
+						$(window).off("scroll");
+					}
+					isLoading = false;
+				},
+				error: function() {
+					$("#loading").hide();
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+	<div id="container"></div>
+	<div id="loading">Loading...</div>
+	<h1>AvianAI Gallery</h1>
+    <p>Welcome to our gallery!</p>
+</body>
+</html>
