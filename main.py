@@ -6,7 +6,7 @@ import time
 from google.cloud import storage
 import os
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/path/to/file/file.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "credentials.json"
 
 # Initialize Google Cloud Storage client
 client = storage.Client()
