@@ -28,12 +28,14 @@ picam2.configure(picam2.create_preview_configuration(main={"format": 'XRGB8888',
 picam2.start()
 
 
-tmpAvg = 0
+tmpAvg = np.average(picam2.capture_array())
 alpha = 0.95
 frame_count = 0
 fps = 30
 frame_size = (640, 480)
 
+LOCK = False
+vid = 0
 
 while True:
     im = picam2.capture_array()
@@ -59,6 +61,10 @@ while True:
         blob.upload_from_filename(filename)
         
         frame_count += 1
+        
+        if LOCK == False:
+            picam2.start_and_record_video(f"test-{vid}.mp4", duration=5)
+            vid = vid + 1
     
     tmpAvg = newAvg
 
