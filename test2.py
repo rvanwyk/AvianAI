@@ -78,6 +78,10 @@ while True:
     if iter >= 100:
         RECORD = False
         iter = 0
+        # filename = 'motion_detected_%d.jpg' % time.time()
+        # blob = bucket.blob('motion_videos/%s' % filename)
+        blob = bucket.blob("output.avi")
+        blob.upload_from_filename("motion_videos/output.avi")
         print("********************* COMPLETE *********************")
     tmpAvg = newAvg
 
