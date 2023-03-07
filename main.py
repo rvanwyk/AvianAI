@@ -42,7 +42,7 @@ while True:
 
 
     grey = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-    # tmpAvg = tmpAvg*alpha + (1-alpha)*np.average(im) 
+    tmpAvg = tmpAvg*alpha + (1-alpha)*np.average(im) 
 
 
     newAvg = np.average(im) 
