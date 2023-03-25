@@ -1,0 +1,36 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Welcome</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'welcome.css')}}">
+        <link rel="stylesheet" type="text/css" href="../static/welcome.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Welcome to Your Portal</h1>
+            <p>Hello, {{name}}!</p>
+            <p>Your email is: {{email}}</p>
+            <div class="button-container">
+                <form action="{{ url_for('create_bucket_endpoint') }}" method="POST">
+                    <label for="bucket_name">Bucket Name:</label>
+                    <input type="text" name="bucket_name" id="bucket_name">
+                    <button type="submit">Create Storage Bucket</button>
+                </form>
+                <div style="margin-bottom: 10px;"></div>
+                <form action="{{ url_for('create_service_account_endpoint') }}" method="POST">
+                    <button type="submit">Create Service Account</button>
+                  </form>
+            </div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul class="flashes">
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+        </div>
+      </body>
+    </html>
+
