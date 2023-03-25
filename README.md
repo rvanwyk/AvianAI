@@ -30,6 +30,9 @@ python predict.py --image <path_to_image>
 ```
 Replace <path_to_image> with the path to the input image. The predicted species label will be displayed on the console.
 
+## Architecture
+All of the html, css, and python files are containerized with a dockerfile. The container is deployed via the Google Cloud Run service. A Google Cloud Load Balancer handles the backend, and the service is routed to a domain. Images and videos collected from hardware are uploaded to a Google Cloud Storage Bucket. Custom Tensorflow algorithms are run on top of those assets.
+
 ## Credits
 This project was created by Sai Oruganti and Ryan VanWyk as a project for the Carolina Engage Grant at the University of South Carolina. The code is released under the MIT License. The Bird-150 dataset is the property of its respective owners and is licensed under the Creative Commons Attribution-ShareAlike 3.0 License.
 
