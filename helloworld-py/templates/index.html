@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}AvianAI - Motion Activated Bird Camera{% endblock %}
+
+{% block content %}
+<header>
+    <h1>AvianAI - Motion Activated Bird Camera</h1>
+</header>
+<main>
+    <section>
+        <h2>Project Overview</h2>
+        <p>AvianAI is a motion activated bird camera that is attached to a bird feeder. The camera captures a picture or video of the bird when it flies up to the feeder. The picture or video is then sent to the cloud and run through an image classification model to identify the type of bird. The user is then notified of the type of bird that just flew up to the feeder.</p>
+    </section>
+    <section>
+        <h2>How it Works</h2>
+        <p>When a bird flies up to the feeder, the motion activated camera captures a picture or video of the bird. The picture or video is then sent to the cloud where it is run through an image classification model. The model identifies the type of bird in the picture or video and sends a notification to the user with the type of bird that was just at the feeder.</p>
+    </section>
+    <section>
+        <h2>Benefits of AvianAI</h2>
+        <ul>
+            <li>Provides a way to easily identify the different types of birds that visit a bird feeder.</li>
+            <li>Helps users learn more about the different types of birds that live in their area.</li>
+            <li>Provides an opportunity for users to contribute to citizen science projects by recording bird sightings.</li>
+        </ul>
+    </section>
+</main>
+{% endblock %}
+
